@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Danh Sách PKKH</h2>
+<div class="d-flex justify-content-center gap-3 mb-4">
+    <a class="btn btn-primary" href="{% url 'viz:them_pkkh' %}">Thêm PKKH</a>
+    <a class="btn btn-primary" href="{% url 'viz:upload_pkkh' %}">Upload PKKH</a>
+</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã PKKH</th>
+                <th>Tên PKKH</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pkkh in list_pkkh %}
+            <tr>
+                <td>{{ pkkh.ma_pkkh }}</td>
+                <td>{{ pkkh.mo_ta_pkkh }}</td>
+                <td><a href="{% url 'viz:update_pkkh' pkkh.ma_pkkh %}">Update</a></td>
+                <td><a href="{% url 'viz:delete_pkkh' pkkh.ma_pkkh %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
